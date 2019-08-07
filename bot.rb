@@ -29,15 +29,12 @@ if $PROGRAM_NAME == __FILE__
         bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}")
       when '/compliceuser'
         response = Complice.userinfo
-        puts response
         bot.api.send_message(chat_id: message.chat.id, text: "#{response}")
       when '/goals'
         response = Complice.goals
-        puts response
         bot.api.send_message(chat_id: message.chat.id, text: "#{response}")
       when '/today'
         response = Complice.today_full
-        puts response
         bot.api.send_message(chat_id: message.chat.id, text: "#{response}")
       when '/intention'
         response = Complice.add_new_intention(text)

@@ -31,9 +31,7 @@ class Complice
 
   def self.today_full
     body = get('/today/full.json', query: default_params)&.body
-    puts body
     today = TodayFullRepresenter.new(TodayFull.new).from_json(body)
-    pp today
     goals = goals_active.goals
     today.core.list.map { |intention| print_intention(intention, goals) } .join("\n")
   end
