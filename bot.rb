@@ -3,9 +3,17 @@ require 'rubygems'
 require 'httparty'
 require 'logger'
 require 'telegram/bot'
+require 'pp'
 
 load 'config.rb'
 load 'complice/complice.rb'
+
+def split_command_botname(command)
+  splitter_index = command.index('@') || command.length
+  raw_command = command[0, splitter_index]
+  bot_name = command[splitter_index + 1, command.length]
+  [raw_command, bot_name]
+end
 
 if $PROGRAM_NAME == __FILE__
 
@@ -19,8 +27,15 @@ if $PROGRAM_NAME == __FILE__
         next
       end
 
-      command = message.text[0, command_data.length]
+      long_command = message.text[0, command_data.length]
+      command, bot_name = split_command_botname(long_command)
+
       text = message.text[command_data.length + 1, message.text.length]
+
+      if !bot_name.nil? && bot_name != Config.config['bot']['username']
+        # ignore message cause it was adressed to another bot
+        next
+      end
 
       case command
       when '/start'
@@ -40,7 +55,7 @@ if $PROGRAM_NAME == __FILE__
         response = Complice.add_new_intention(text)
         bot.api.send_message(chat_id: message.chat.id, text: "You now have #{response} intentions for /today")
       when '/complete'
-        response = Complice.complete(text)
+        Complice.complete(text)
         bot.api.send_message(chat_id: message.chat.id, text: "Item #{text} completed!")
       else
         bot.api.send_message(chat_id: message.chat.id, text: "I don't understand you :(")
