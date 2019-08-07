@@ -1,5 +1,5 @@
 # complice-tg-bot
-A simple Telegram bot for Complice 😊🐳
+A simple Telegram bot for [Complice](https://complice.co) 😊🐳
 
 Install with
 ``` console
