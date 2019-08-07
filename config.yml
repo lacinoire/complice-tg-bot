@@ -1,0 +1,6 @@
+bot:
+  token: <INSERT TOKEN OF YOUR TG BOT>
+  username: lacis_bot
+
+complice:
+  auth_token: <INSERT YOUR COPMLICE API TOKEN>

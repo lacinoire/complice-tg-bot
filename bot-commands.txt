@@ -1,0 +1,7 @@
+start - says hello
+stop - says bye
+compliceuser - shows complice user info (for testing)
+goals - shows current complice goals
+today - shows todays intentions
+intention - adds the text following the command as intention
+complete - mark an intention as completed by giving its `zid` (after || in /today)
