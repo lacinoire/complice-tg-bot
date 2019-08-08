@@ -1,6 +1,9 @@
 bot:
-  token: <INSERT TOKEN OF YOUR TG BOT>
-  username: lacis_bot
+  token: <INSERT API TOKEN OF YOUR TELEGRAM BOT>
+  username: <INSERT USERNAME OF YOU BOT>
+
+user:
+  tg_id: <INSERT YOUR TELEGRAM USER ID>
 
 complice:
-  auth_token: <INSERT YOUR COPMLICE API TOKEN>
+  auth_token: <INSERT YOUR COMPLICE API TOKEN>
