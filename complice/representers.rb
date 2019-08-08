@@ -55,6 +55,10 @@ class TodayFullRepresenter < Representable::Decorator
       property :zid
       property :upd
       property :_id
+      property :d
+      property :pd
+      property :u
+      property :nvm
       collection :gids
     end
 

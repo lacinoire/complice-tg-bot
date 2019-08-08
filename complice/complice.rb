@@ -48,7 +48,14 @@ class Complice
 
   def self.print_intention(intention, goals)
     goalnums = intention.gids.map { |gid| goals.find { |goal| goal._id == gid } .code}
-    "#{goalnums.join(',')}) #{intention.t} || #{intention.zid}"
+    str = "#{goalnums.join(',')}) #{intention.t} || #{intention.zid}"
+    if intention.d
+      # completed
+      str = "\u{2705} " + str
+    else
+      str = "\u{1F537} " + str
+    end
+    str
   end
 
   def self.print_goal(goal)

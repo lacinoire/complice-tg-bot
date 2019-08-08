@@ -21,6 +21,9 @@ if $PROGRAM_NAME == __FILE__
     bot.logger.info('Bot has been started')
     bot.listen do |message|
 
+      # ignore if message is not from you
+      next if message.from.id != Config.config['user']['tg_id']
+
       command_data = message.entities.find { |entity| entity.type == 'bot_command'}
       if command_data.offset != 0
         bot.api.send_message(chat_id: message.chat.id, text: 'Please give bot command first in your message :)')

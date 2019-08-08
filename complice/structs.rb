@@ -58,6 +58,10 @@ Intention = Struct.new(
   :upd,
   :_id,
   :gids,
+  :d, # done
+  :pd, # num of assigned promodoros
+  :u, # days undone
+  :nvm, # is neverminded
 ) do
   def to_s
     t.to_s

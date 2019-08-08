@@ -1,14 +1,12 @@
 # complice-tg-bot
 A simple Telegram bot for [Complice](https://complice.co) 😊🐳
 
-Install with
+Add your API tokens / Telegram User Id in [`config.yml`](config.yml) and then run with with [Docker](https://docs.docker.com/get-started/):
 ``` console
-bundle install
+docker build -t tgbot .
 ```
-
-Add your API tokens in [`config.yml`](config.yml) and then run with
 ``` console
-bundle exec ruby bot.rb
+docker run tgbot
 ```
 
 You can find a command overview in [`bot-commands.txt`](bot-commands.txt), which you can also use to configure the command list in the BotFather.
