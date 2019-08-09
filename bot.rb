@@ -56,10 +56,18 @@ if $PROGRAM_NAME == __FILE__
         bot.api.send_message(chat_id: message.chat.id, text: "#{response}")
       when '/intention'
         response = Complice.add_new_intention(text)
-        bot.api.send_message(chat_id: message.chat.id, text: "You now have #{response} intentions for /today")
+        if response == 'wrong intention format'
+          bot.api.send_message(chat_id: message.chat.id, text: "Please use the intention format to add intentions!")
+        else
+          bot.api.send_message(chat_id: message.chat.id, text: "You now have #{response} intentions for /today")
+        end
       when '/complete'
-        Complice.complete(text)
-        bot.api.send_message(chat_id: message.chat.id, text: "Item #{text} completed!")
+        successful = Complice.complete(text)
+        if successful
+          bot.api.send_message(chat_id: message.chat.id, text: "Item #{text} completed!")
+        else
+          bot.api.send_message(chat_id: message.chat.id, text: "Please give a valid zid to complete!")
+        end
       else
         bot.api.send_message(chat_id: message.chat.id, text: "I don't understand you :(")
       end

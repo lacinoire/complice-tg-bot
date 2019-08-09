@@ -38,12 +38,17 @@ class Complice
 
   def self.add_new_intention(raw_intentions)
     body = post('/intentions', query: default_params.merge('raw' => raw_intentions, 'response' => 'count'))&.body
+    return 'wrong intention format' if body.start_with?('<!DOCTYPE html>')
+
     JSON.parse(body)['intentionsCount']
   end
 
   def self.complete(zid)
     body = post("/completeById/#{zid}", query: default_params)&.body
+    return false if body == 'action not found'
+
     puts JSON.pretty_generate(JSON.parse(body))
+    true
   end
 
   def self.print_intention(intention, goals)
