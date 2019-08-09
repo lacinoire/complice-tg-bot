@@ -9,4 +9,4 @@ docker build -t tgbot .
 docker run tgbot
 ```
 
-You can find a command overview in [`bot-commands.txt`](bot-commands.txt), which you can also use to configure the command list in the BotFather.
+You can find a command overview in [`bot-commands.txt`](bot-commands.txt), which you can also use to configure the command list in the [BotFather](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
