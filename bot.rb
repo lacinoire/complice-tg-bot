@@ -81,7 +81,11 @@ if $PROGRAM_NAME == __FILE__
         reply = 'reply from complice was empty' if reply.empty?
         bot.api.send_message(chat_id: message.chat.id, text: reply)
       rescue Exception => ex
-        bot.logger.info("Caugth exception: #{ex}")
+        begin
+          bot.api.send_message(chat_id: message.chat.id, text: "Caugth exception: #{ex}")
+        ensure
+          bot.logger.info("Caugth exception: #{ex}")
+        end
       end
     end
   end
